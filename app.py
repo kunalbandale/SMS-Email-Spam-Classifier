@@ -2,8 +2,8 @@ import streamlit as st
 import time
 import pickle
 import string
-from nltk.corpus import stopwords
 import nltk
+from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
 # Download nltk resources
