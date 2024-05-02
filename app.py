@@ -1,4 +1,3 @@
-!pip install nltk
 import streamlit as st
 import time
 import pickle
