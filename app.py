@@ -75,6 +75,7 @@ if st.button('Predict'):
                 st.header("Not Spam")
 
 # Footer
+# Footer
 st.markdown(
     """
     <hr>
@@ -84,8 +85,7 @@ st.markdown(
             <p>Follow: 
                 <a href="https://github.com/kunalbandale" style="color: white;"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/kunalbandale" style="color: white;"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.kunalbandale.in" style="color: white;"><i class="fab fa-fa-globe"></i></a>
-                
+                <a href="https://www.kunalbandale.in" style="color: white;"><i class="fas fa-globe"></i></a>  
             </p>
         </div>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
