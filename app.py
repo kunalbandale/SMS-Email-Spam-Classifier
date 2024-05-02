@@ -79,9 +79,12 @@ st.markdown(
     """
     <hr>
     <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-        <div id="footer" style="text-align: center; font-size: 0.9rem;">
+        <div id="footer" style="text-align: center; font-size: 0.9rem; color: white;">
+            <p>Copyright © 2024 Your Company. All rights reserved.</p>
             <p>Follow: 
-                <a href="https://github.com/kunalbandale"><i class="fab fa-github"></i> GitHub</a> 
+                <a href="https://github.com/kunalbandale" style="color: white;"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/kunalbandale" style="color: white;"><i class="fab fa-linkedin"></i></a>
+                <a href="https://twitter.com/kunalbandale" style="color: white;"><i class="fab fa-twitter"></i></a>
             </p>
         </div>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
