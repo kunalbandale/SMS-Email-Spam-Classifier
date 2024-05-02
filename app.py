@@ -2,8 +2,8 @@ import streamlit as st
 import time
 import pickle
 import string
-from nltk.corpus import stopwords
 import nltk
+from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
 # Download nltk resources
@@ -11,6 +11,7 @@ nltk.download('punkt')
 nltk.download('stopwords')
 
 ps = PorterStemmer()
+
 
 def transform_text(text):
     text = text.lower()
@@ -35,6 +36,7 @@ def transform_text(text):
         y.append(ps.stem(i))
 
     return " ".join(y)
+
 
 # Load model and vectorizer
 tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
@@ -143,15 +145,13 @@ st.markdown(
     """
     <hr>
     <div id="footer" style="text-align: center; font-size: 0.9rem;">
-        # <p>Contact: contact@example.com</p>
-        <p>Follow: 
-            <a href="https://github.com/kunalbandale"><i class="fab fa-github"></i> GitHub</a> | 
-            <a href="https://www.kunalbandale.in"><i class="fas fa-globe" style="margin-right: 0.5rem;"></i> Website</a>
+        <p>Follow : 
+            <a href="https://github.com/kunalbandale"><i class="fab fa-github"></i> GitHub</a> 
         </p>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-st.markdown('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">', unsafe_allow_html=True)
-
+st.markdown('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">',
+            unsafe_allow_html=True)
