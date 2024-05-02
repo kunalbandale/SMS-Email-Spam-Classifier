@@ -50,6 +50,8 @@ st.set_page_config(
 )
 
 # Main Content
+st.header("Email/SMS Spam Classifier")
+
 input_sms = st.text_area("Enter the message")
 
 if st.button('Predict'):
@@ -84,6 +86,26 @@ st.markdown(
         </div>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# CSS for mobile responsiveness
+st.markdown(
+    """
+    <style>
+        /* Mobile responsiveness */
+        @media (max-width: 600px) {
+            .stTextArea textarea {
+                min-height: 100px !important;
+            }
+            .css-vfskoc {
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+        }
+    </style>
     """,
     unsafe_allow_html=True
 )
