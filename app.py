@@ -12,7 +12,6 @@ nltk.download('stopwords')
 
 ps = PorterStemmer()
 
-
 def transform_text(text):
     text = text.lower()
     text = nltk.word_tokenize(text)
@@ -50,73 +49,6 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Navigation Bar
-st.markdown(
-    """
-    <style>
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            background-color: #333333;
-            color: white;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 999;
-        }
-        .navbar-brand {
-            font-size: 1.5rem;
-            margin: 0;
-            padding: 0;
-        }
-        .navbar-brand a {
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-        }
-        .navbar a:hover {
-            background-color: #555555;
-        }
-        @media only screen and (max-width: 600px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .navbar a {
-                padding: 0.5rem;
-            }
-            .navbar-brand {
-                margin-bottom: 1rem;
-            }
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-st.markdown(
-    """
-    <div class="navbar">
-        <div class="navbar-brand">
-            <h2 style="margin-right: 1rem;">📧 Email/SMS Spam Classifier</h2>
-        </div>
-        <div>
-            <a href="https://github.com/kunalbandale" style="margin-right: 1rem;"><i class="fab fa-github"></i> GitHub</a>
-        </div>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
 # Main Content
 input_sms = st.text_area("Enter the message")
 
@@ -144,14 +76,14 @@ if st.button('Predict'):
 st.markdown(
     """
     <hr>
-    <div id="footer" style="text-align: center; font-size: 0.9rem;">
-        <p>Follow : 
-            <a href="https://github.com/kunalbandale"><i class="fab fa-github"></i> GitHub</a> 
-        </p>
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <div id="footer" style="text-align: center; font-size: 0.9rem;">
+            <p>Follow: 
+                <a href="https://github.com/kunalbandale"><i class="fab fa-github"></i> GitHub</a> 
+            </p>
+        </div>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </div>
     """,
     unsafe_allow_html=True
 )
-
-st.markdown('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">',
-            unsafe_allow_html=True)
