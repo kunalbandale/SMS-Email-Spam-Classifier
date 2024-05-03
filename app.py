@@ -52,15 +52,8 @@ st.set_page_config(
 # Main Content
 st.header("Email/SMS Spam Classifier")
 
-# Initialize session state
-if 'first_load' not in st.session_state:
-    st.session_state.first_load = True
-
-# Pop-up window for instructions
-if st.session_state.first_load:
-    st.session_state.first_load = False
-    st.sidebar.write("For better results, please paste the complete SMS/EMAIL.")
-    time.sleep(3)  # Hold pop-up for 3 seconds
+# Message for better results
+st.write("For better results, please paste the complete SMS/EMAIL.")
 
 input_sms = st.text_area("Enter the message")
 
@@ -84,6 +77,7 @@ if st.button('Predict'):
             else:
                 st.header("Not Spam")
 
+# Footer
 # Footer
 st.markdown(
     """
