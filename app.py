@@ -52,6 +52,10 @@ st.set_page_config(
 # Main Content
 st.header("Email/SMS Spam Classifier")
 
+# Initialize session state
+if 'first_load' not in st.session_state:
+    st.session_state.first_load = True
+
 # Pop-up window for instructions
 if st.session_state.first_load:
     st.session_state.first_load = False
@@ -117,6 +121,3 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-if 'first_load' not in st.session_state:
-    st.session_state.first_load = True
