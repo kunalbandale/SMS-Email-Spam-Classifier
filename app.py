@@ -60,6 +60,7 @@ if 'first_load' not in st.session_state:
 if st.session_state.first_load:
     st.session_state.first_load = False
     st.sidebar.write("For better results, please paste the complete SMS/EMAIL.")
+    time.sleep(3)  # Hold pop-up for 3 seconds
 
 input_sms = st.text_area("Enter the message")
 
