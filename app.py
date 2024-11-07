@@ -6,12 +6,14 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
-# Download nltk resources
+# Ensure required NLTK resources are downloaded
 nltk.download('punkt', quiet=True)
 nltk.download('stopwords', quiet=True)
 
+# Initialize stemmer
 ps = PorterStemmer()
 
+# Text preprocessing function
 def transform_text(text):
     text = text.lower()
     text = nltk.word_tokenize(text)
@@ -36,12 +38,15 @@ def transform_text(text):
 
     return " ".join(y)
 
+# Load model and vectorizer (make sure these files exist in the same directory)
+try:
+    tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
+    model = pickle.load(open('model.pkl', 'rb'))
+except FileNotFoundError as e:
+    st.error(f"Model or vectorizer file not found: {e}")
+    st.stop()
 
-# Load model and vectorizer
-tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
-model = pickle.load(open('model.pkl', 'rb'))
-
-# Page Layout
+# Set up Streamlit page configuration at the start
 st.set_page_config(
     page_title="Email/SMS Spam Classifier",
     page_icon="📧",
@@ -49,59 +54,52 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Main Content
+# Main content
 st.header("Email/SMS Spam Classifier")
-
-# Message for better results
 st.write("For better results, please paste the complete SMS/EMAIL.")
 
 input_sms = st.text_area("Enter the message")
 
 if st.button('Predict'):
-    # Check if input_sms is empty
     if input_sms.strip() == "":
         st.warning("Please enter a message to predict.")
     else:
         # Show loading spinner
         with st.spinner('Predicting...'):
             time.sleep(3)  # Simulate prediction time
-            # 1. Preprocess
+            # Preprocess input text
             transformed_sms = transform_text(input_sms)
-            # 2. Vectorize
+            # Vectorize input text
             vector_input = tfidf.transform([transformed_sms])
-            # 3. Predict
+            # Predict using the model
             result = model.predict(vector_input)[0]
-            # 4. Display
+            # Display result
             if result == 1:
                 st.header("Spam")
             else:
                 st.header("Not Spam")
 
-# Footer
-# Footer
+# Footer content
 st.markdown(
     """
     <hr>
-    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-        <div id="footer" style="text-align: center; font-size: 0.9rem; color: white;">
-            <p>Build by Kunal Bandale ⚡</p>
-            <p>Follow: 
-                <a href="https://github.com/kunalbandale" style="color: white;"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/kunalbandale" style="color: white;"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.kunalbandale.in" style="color: white;"><i class="fas fa-globe"></i></a>  
-            </p>
-        </div>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <div style="text-align: center;">
+        <p>Build by Kunal Bandale ⚡</p>
+        <p>
+            <a href="https://github.com/kunalbandale" style="text-decoration: none;">GitHub</a> |
+            <a href="https://www.linkedin.com/in/kunalbandale" style="text-decoration: none;">LinkedIn</a> |
+            <a href="https://www.kunalbandale.in" style="text-decoration: none;">Website</a>
+        </p>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-# CSS for mobile responsiveness
+# Mobile responsiveness CSS
 st.markdown(
     """
     <style>
-        /* Mobile responsiveness */
+        /* Adjust text area height on mobile */
         @media (max-width: 600px) {
             .stTextArea textarea {
                 min-height: 100px !important;
