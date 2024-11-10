@@ -7,6 +7,7 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
 # Ensure required NLTK resources are downloaded
+nltk.data.path.append('/app/nltk_data')
 nltk.download('punkt', quiet=True)
 nltk.download('stopwords', quiet=True)
 
